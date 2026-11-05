@@ -18,3 +18,7 @@ PASS runtime gate before commit: see stage-3-verification.txt.
 ## Stage 4: full CRUD
 Command: `python ../build_a1_final.py 4`
 PASS runtime gate before commit: see stage-4-verification.txt.
+
+## Stage 5: Swagger UI
+Command: `python ../build_a1_final.py 5`
+PASS runtime gate before commit: see stage-5-verification.txt.
