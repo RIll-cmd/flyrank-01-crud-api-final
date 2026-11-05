@@ -1,0 +1,59 @@
+curl.exe -sS -i -X POST http://127.0.0.1:8111/tasks -H Content-Type: application/json -d {"title": "Buy milk"}
+
+HTTP/1.1 201 Created
+date: Thu, 05 Nov 2026 08:23:48 GMT
+server: uvicorn
+content-length: 40
+content-type: application/json
+
+{"id":4,"title":"Buy milk","done":false}
+
+curl.exe -sS -i -X GET http://127.0.0.1:8111/tasks
+
+HTTP/1.1 200 OK
+date: Thu, 05 Nov 2026 08:23:48 GMT
+server: uvicorn
+content-length: 173
+content-type: application/json
+
+[{"id":1,"title":"Learn APIs","done":false},{"id":2,"title":"Read a book","done":false},{"id":3,"title":"Take a walk","done":false},{"id":4,"title":"Buy milk","done":false}]
+
+curl.exe -sS -i -X POST http://127.0.0.1:8111/tasks -H Content-Type: application/json -d {}
+
+HTTP/1.1 400 Bad Request
+date: Thu, 05 Nov 2026 08:23:48 GMT
+server: uvicorn
+content-length: 41
+content-type: application/json
+
+{"error":"A non-empty title is required"}
+
+curl.exe -sS -i -X POST http://127.0.0.1:8111/tasks -H Content-Type: application/json -d {"title": ""}
+
+HTTP/1.1 400 Bad Request
+date: Thu, 05 Nov 2026 08:23:48 GMT
+server: uvicorn
+content-length: 41
+content-type: application/json
+
+{"error":"A non-empty title is required"}
+
+curl.exe -sS -i -X POST http://127.0.0.1:8111/tasks -H Content-Type: application/json -d {"title": "  "}
+
+HTTP/1.1 400 Bad Request
+date: Thu, 05 Nov 2026 08:23:48 GMT
+server: uvicorn
+content-length: 41
+content-type: application/json
+
+{"error":"A non-empty title is required"}
+
+curl.exe -sS -i -X POST http://127.0.0.1:8111/tasks -H Content-Type: application/json -d {"title": 6}
+
+HTTP/1.1 400 Bad Request
+date: Thu, 05 Nov 2026 08:23:48 GMT
+server: uvicorn
+content-length: 41
+content-type: application/json
+
+{"error":"A non-empty title is required"}
