@@ -1,0 +1,11 @@
+curl.exe -sS -i -X GET http://127.0.0.1:8111/
+
+HTTP/1.1 200 OK
+date: Thu, 05 Nov 2026 08:23:14 GMT
+server: uvicorn
+content-length: 27
+content-type: application/json
+
+{"message":"Hello, server"}
+
+PASS real Chromium JSON browser GET /
