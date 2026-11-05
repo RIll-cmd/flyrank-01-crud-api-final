@@ -1,0 +1,23 @@
+curl.exe -sS -i -X GET http://127.0.0.1:8111/
+
+HTTP/1.1 200 OK
+date: Thu, 05 Nov 2026 08:23:20 GMT
+server: uvicorn
+content-length: 58
+content-type: application/json
+
+{"name":"Task API","version":"1.0","endpoints":["/tasks"]}
+
+PASS real Chromium JSON browser GET /
+
+curl.exe -sS -i -X GET http://127.0.0.1:8111/health
+
+HTTP/1.1 200 OK
+date: Thu, 05 Nov 2026 08:23:20 GMT
+server: uvicorn
+content-length: 15
+content-type: application/json
+
+{"status":"ok"}
+
+PASS real Chromium JSON browser GET /health
