@@ -1,0 +1,149 @@
+curl.exe -sS -i -X POST http://127.0.0.1:8112/tasks -H Content-Type: application/json -d {"title": "Buy milk"}
+
+HTTP/1.1 201 Created
+date: Thu, 05 Nov 2026 08:24:56 GMT
+server: uvicorn
+content-length: 40
+content-type: application/json
+
+{"id":4,"title":"Buy milk","done":false}
+
+curl.exe -sS -i -X PUT http://127.0.0.1:8112/tasks/4 -H Content-Type: application/json -d {"title": "Buy oat milk"}
+
+HTTP/1.1 200 OK
+date: Thu, 05 Nov 2026 08:24:56 GMT
+server: uvicorn
+content-length: 44
+content-type: application/json
+
+{"id":4,"title":"Buy oat milk","done":false}
+
+curl.exe -sS -i -X PUT http://127.0.0.1:8112/tasks/4 -H Content-Type: application/json -d {"done": true}
+
+HTTP/1.1 200 OK
+date: Thu, 05 Nov 2026 08:24:56 GMT
+server: uvicorn
+content-length: 43
+content-type: application/json
+
+{"id":4,"title":"Buy oat milk","done":true}
+
+curl.exe -sS -i -X DELETE http://127.0.0.1:8112/tasks/4
+
+HTTP/1.1 204 No Content
+date: Thu, 05 Nov 2026 08:24:56 GMT
+server: uvicorn
+
+
+
+curl.exe -sS -i -X GET http://127.0.0.1:8112/tasks
+
+HTTP/1.1 200 OK
+date: Thu, 05 Nov 2026 08:24:56 GMT
+server: uvicorn
+content-length: 132
+content-type: application/json
+
+[{"id":1,"title":"Learn APIs","done":false},{"id":2,"title":"Read a book","done":false},{"id":3,"title":"Take a walk","done":false}]
+
+curl.exe -sS -i -X GET http://127.0.0.1:8112/tasks/4
+
+HTTP/1.1 404 Not Found
+date: Thu, 05 Nov 2026 08:24:56 GMT
+server: uvicorn
+content-length: 28
+content-type: application/json
+
+{"error":"Task 4 not found"}
+
+curl.exe -sS -i -X PUT http://127.0.0.1:8112/tasks/4 -H Content-Type: application/json -d {"title": "missing"}
+
+HTTP/1.1 404 Not Found
+date: Thu, 05 Nov 2026 08:24:56 GMT
+server: uvicorn
+content-length: 28
+content-type: application/json
+
+{"error":"Task 4 not found"}
+
+curl.exe -sS -i -X DELETE http://127.0.0.1:8112/tasks/4
+
+HTTP/1.1 404 Not Found
+date: Thu, 05 Nov 2026 08:24:56 GMT
+server: uvicorn
+content-length: 28
+content-type: application/json
+
+{"error":"Task 4 not found"}
+
+curl.exe -sS -i -X POST http://127.0.0.1:8112/tasks -H Content-Type: application/json -d {}
+
+HTTP/1.1 400 Bad Request
+date: Thu, 05 Nov 2026 08:24:56 GMT
+server: uvicorn
+content-length: 41
+content-type: application/json
+
+{"error":"A non-empty title is required"}
+
+curl.exe -sS -i -X POST http://127.0.0.1:8112/tasks -H Content-Type: application/json -d {"title": ""}
+
+HTTP/1.1 400 Bad Request
+date: Thu, 05 Nov 2026 08:24:56 GMT
+server: uvicorn
+content-length: 41
+content-type: application/json
+
+{"error":"A non-empty title is required"}
+
+curl.exe -sS -i -X POST http://127.0.0.1:8112/tasks -H Content-Type: application/json -d {"title": "   "}
+
+HTTP/1.1 400 Bad Request
+date: Thu, 05 Nov 2026 08:24:56 GMT
+server: uvicorn
+content-length: 41
+content-type: application/json
+
+{"error":"A non-empty title is required"}
+
+curl.exe -sS -i -X POST http://127.0.0.1:8112/tasks -H Content-Type: application/json -d {"title": 8}
+
+HTTP/1.1 400 Bad Request
+date: Thu, 05 Nov 2026 08:24:56 GMT
+server: uvicorn
+content-length: 41
+content-type: application/json
+
+{"error":"A non-empty title is required"}
+
+curl.exe -sS -i -X PUT http://127.0.0.1:8112/tasks/1 -H Content-Type: application/json -d {}
+
+HTTP/1.1 400 Bad Request
+date: Thu, 05 Nov 2026 08:24:56 GMT
+server: uvicorn
+content-length: 31
+content-type: application/json
+
+{"error":"Invalid task update"}
+
+curl.exe -sS -i -X PUT http://127.0.0.1:8112/tasks/1 -H Content-Type: application/json -d {"title": ""}
+
+HTTP/1.1 400 Bad Request
+date: Thu, 05 Nov 2026 08:24:56 GMT
+server: uvicorn
+content-length: 31
+content-type: application/json
+
+{"error":"Invalid task update"}
+
+curl.exe -sS -i -X PUT http://127.0.0.1:8112/tasks/1 -H Content-Type: application/json -d {"done": "yes"}
+
+HTTP/1.1 400 Bad Request
+date: Thu, 05 Nov 2026 08:24:56 GMT
+server: uvicorn
+content-length: 31
+content-type: application/json
+
+{"error":"Invalid task update"}
+
+PASS fresh public clone, clean venv dependency installation and full curl CRUD in 24.7 seconds
