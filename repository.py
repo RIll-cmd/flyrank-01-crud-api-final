@@ -10,3 +10,13 @@ class Repository:
     def create(self, title):
         task = {"id": self.next_id, "title": title, "done": False}; self.next_id += 1; self.tasks.append(task); return task
 
+    def update(self, task_id, changes):
+        task = self.get(task_id)
+        if task: task.update(changes)
+        return task
+
+    def delete(self, task_id):
+        task = self.get(task_id)
+        if task: self.tasks.remove(task)
+        return bool(task)
+

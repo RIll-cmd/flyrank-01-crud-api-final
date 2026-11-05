@@ -14,3 +14,7 @@ PASS runtime gate before commit: see stage-2-verification.txt.
 ## Stage 3: create with validation
 Command: `python ../build_a1_final.py 3`
 PASS runtime gate before commit: see stage-3-verification.txt.
+
+## Stage 4: full CRUD
+Command: `python ../build_a1_final.py 4`
+PASS runtime gate before commit: see stage-4-verification.txt.
